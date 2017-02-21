@@ -15,7 +15,7 @@ function theme_name_theme_setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' ); // TODO: remove if not needed
 	
 	/*
 	 * Switch default core markup for search form, comment form, and comments
