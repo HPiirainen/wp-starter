@@ -12,9 +12,10 @@ get_header(); ?>
         <div class="row">
             <?php get_sidebar(); ?>
 
+			<?php the_archive_title( '<h1 class="">', '</h1>' ); ?>
+
 			<?php
 			if ( have_posts() ) : ?>
-				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
@@ -34,7 +35,7 @@ get_header(); ?>
 					//get_template_part( 'template-parts/content', get_post_format() );
 					
 					// OPTION 2
-					the_title( '<h1 class="">', '</h1>' );
+					the_title( '<h2 class="">', '</h2>' );
 					the_content();
 					
 				endwhile;
