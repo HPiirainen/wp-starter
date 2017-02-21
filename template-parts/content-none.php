@@ -8,8 +8,10 @@
  */
 
 ?>
-<?php
-	if ( is_search() ) : ?>
+	
+	<h1 class="page-title"><?php esc_html_e( 'Sisältöä ei löytynyt', 'theme_name' ); ?></h1>
+	
+	<?php if ( is_search() ) : ?>
 	
 		<p><?php esc_html_e( 'Hakusanalla ei löytynyt tuloksia. Kokeile uudestaan eri hakusanalla.', 'theme_name' ); ?></p>
 		<?php get_search_form();

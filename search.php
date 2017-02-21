@@ -12,10 +12,10 @@ get_header(); ?>
     <?php get_sidebar(); ?>
 	<div id="" class="">
 		<?php // TODO: Check that displaying query and result count work! ?>
-		<h1 class=""><?php printf( esc_html__( 'Hakutulokset: %s', 'theme_name' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 		<?php
 		if ( have_posts() ) : ?>
-		
+			
+			<h1 class=""><?php printf( esc_html__( 'Hakutulokset: %s', 'theme_name' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			<?php global $wp_query; ?>
 			<p><?php printf( esc_html__( 'Haulla löytyi %s tulosta', 'theme_name' ), $wp_query->found_posts ); ?></p>
 			

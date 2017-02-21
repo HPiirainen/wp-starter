@@ -12,11 +12,10 @@ get_header(); ?>
         <div class="row">
             <?php get_sidebar(); ?>
 			
-			<h1 class=""><?php echo single_cat_title(); ?></h1>
-			
 			<?php
 			if ( have_posts() ) : ?>
-				
+			
+				<h1 class=""><?php echo single_cat_title(); ?></h1>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();

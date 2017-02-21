@@ -12,10 +12,10 @@ get_header(); ?>
         <div class="row">
             <?php get_sidebar(); ?>
 
-			<?php the_archive_title( '<h1 class="">', '</h1>' ); ?>
-
 			<?php
 			if ( have_posts() ) : ?>
+			
+				<?php the_archive_title( '<h1 class="">', '</h1>' ); ?>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
