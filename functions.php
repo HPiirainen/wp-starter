@@ -32,6 +32,11 @@ function theme_name_theme_setup() {
 	register_nav_menu( 'primary', esc_html__( 'Primary', 'theme_name' ) );
 	
 	load_theme_textdomain( 'theme_name', get_template_directory() . '/languages' );
+	
+	/**
+     * Use main stylesheet for visual editor
+     */
+	add_editor_style();
 }
 add_action( 'after_setup_theme', 'theme_name_theme_setup' );
 
