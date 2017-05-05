@@ -42,7 +42,7 @@ get_header(); ?>
 			endwhile;
 			
 			// TODO: check if needed and if this function works
-			the_posts_navigation();
+			echo paginate_links();
 
 		else :
 			

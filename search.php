@@ -28,7 +28,7 @@ get_header(); ?>
 				
 			endwhile;
 
-			the_posts_navigation();
+			echo paginate_links();
 
 		else :
 			
