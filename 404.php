@@ -15,7 +15,7 @@ get_header(); ?>
 				<div class="content">
 					<h1><?php esc_html_e('Sivua ei löytynyt', 'theme_name'); ?></h1>
 					<?php // TODO: modify text and hide/show search form accordingly ?>
-					<p><?php esc_html_e( 'Valitsemaasi sivua ei löytynyt. Voit yrittää löytää etsimäsi sivun alla olevan hakukentän avulla.', 'test_theme' ); ?></p>
+					<p><?php esc_html_e( 'Valitsemaasi sivua ei löytynyt. Voit yrittää löytää etsimäsi sivun alla olevan hakukentän avulla.', 'theme_name' ); ?></p>
 					<?php get_search_form(); ?>
 				</div>
 			</div>
