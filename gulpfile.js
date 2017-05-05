@@ -10,9 +10,6 @@ var imagemin        = require('gulp-imagemin');
 var sassIn = './scss/**/*.scss';
 var sassOut = './';
 
-var filterJS = filter('**/*.js', { restore: true });
-var filterCSS = filter('**/*.css', { restore: true });
-
 gulp.task('default', ['watch']);
 
 gulp.task('watch', function() {
@@ -35,7 +32,7 @@ gulp.task('serve', function() {
 gulp.task('sass', function() {
 	return gulp.src(sassIn)
 		.pipe(sourcemaps.init())
-		.pipe(sass(/* { outputStyle: 'compressed' } */)).on('error', sass.logError)
+		.pipe(sass({ outputStyle: 'expanded' })).on('error', sass.logError)
 		.pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
