@@ -30,7 +30,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('sass', function() {
-	return gulp.src(sassIn)
+	return gulp.src('scss/style.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: 'expanded' })).on('error', sass.logError)
 		.pipe(autoprefixer({
@@ -40,6 +40,14 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(sassOut))
 		.pipe(browserSync.stream());
+});
+
+gulp.task('vendorsass', function() {
+	return gulp.src('scss/boot*.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
+        .pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('css/'));
 });
 
 gulp.task('pot', function() {

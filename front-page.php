@@ -8,10 +8,10 @@
 
 get_header(); ?>
 
-<main id="" role="">
-	<div id="" class="">
-		
-	</div>
-</main>
+<?php while( have_posts() ) : the_post(); ?>
+				
+	<?php the_content(); ?>
+
+<?php endwhile; ?>
 
 <?php get_footer(); ?>

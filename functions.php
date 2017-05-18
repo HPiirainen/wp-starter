@@ -2,25 +2,11 @@
 
 function theme_name_theme_setup() {
 	
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
+	/**
+	 * Theme supports
 	 */
 	add_theme_support( 'title-tag' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
-	add_theme_support( 'post-thumbnails' ); // TODO: remove if not needed
-	
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
+	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array(
 		'search-form',
 		'comment-form',
@@ -28,42 +14,48 @@ function theme_name_theme_setup() {
 		'gallery',
 		'caption',
 	) );
-	
+
+	/**
+	 * Register main menu
+	 */
 	register_nav_menu( 'primary', esc_html__( 'Primary', 'theme_name' ) );
 	
+	/**
+	 * Load text domain
+	 */
 	load_theme_textdomain( 'theme_name', get_template_directory() . '/languages' );
 	
-	/**
-     * Use main stylesheet for visual editor
-     */
-	add_editor_style();
 }
 add_action( 'after_setup_theme', 'theme_name_theme_setup' );
 
+/**
+ * Enqueue scripts and styles.
+ */
 function theme_name_scripts_styles() {
-    // TODO: Check latest versions and check if we can use Bootstrap CSS from a CDN
     
-    wp_enqueue_script('theme_name-bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), true, true);
-    wp_enqueue_script( 'theme_name-mainjs',  get_template_directory_uri() . '/js/main.js', array('jquery'), true, true );
+    wp_enqueue_script( 'theme_name-bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array( 'jquery' ), true, true );
+    wp_enqueue_script( 'theme_name-mainjs',  get_template_directory_uri() . '/js/jquery.main.js', array('jquery'), true, true );
     
-    wp_enqueue_style( 'theme_name-font', '//fonts.googleapis.com/css?family=Work+Sans:400,700,500,800');
 	wp_enqueue_style( 'theme_name-bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.css' );
 	wp_enqueue_style( 'theme_name-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts_styles' );
 
-
-
-
-function special_nav_class($classes, $item){
-    if( in_array('current-menu-item', $classes) || in_array('current-page-ancestor', $classes) ) {
+/**
+ * Add 'active' class to current / ancestor nav items
+ */
+function special_nav_class( $classes, $item ) {
+    if( in_array( 'current-menu-item', $classes ) || in_array( 'current-page-ancestor', $classes ) ) {
              $classes[] = 'active ';
     }
     return $classes;
 }
-add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
+add_filter( 'nav_menu_css_class', 'special_nav_class', 10, 2 );
 
-function custom_excerpt_length($length) {
+/**
+ * Modify excerpts
+ */
+function custom_excerpt_length( $length ) {
 	return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
@@ -71,7 +63,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 function new_excerpt_more( $more ) {
 	return '...';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+add_filter( 'excerpt_more', 'new_excerpt_more' );
 
 
 // For 2nd level sub-navs only, modify HTML to fit into layout
@@ -116,6 +108,35 @@ function get_hierarchical_pages() {
         echo '</ul></nav></aside>';
     endif;
 }
+
+/* ACF Pro */
+/*
+if( function_exists('acf_add_options_page') ) {
+	
+	$theme_settings_args = array(
+		'page_title' => 'Teeman asetukset',
+		'menu_title' => 'Teeman asetukset',
+		'menu_slug' => 'theme-settings',
+		'redirect' => true
+	);
+	
+	$child_settings_args = array(
+		'page_title' => 'Alasivu',
+		'menu_title' => 'Alasivu',
+		'parent_slug' => 'theme-settings'
+	);
+	
+	acf_add_options_page( $theme_settings_args );
+	acf_add_options_sub_page( $child_settings_args );
+		
+}
+*/
+
+/* Yoast SEO */
+function yoasttobottom() {
+	return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'yoasttobottom');
 
 // TODO: If site integrated with FloMembers, uncomment next sections
 /*

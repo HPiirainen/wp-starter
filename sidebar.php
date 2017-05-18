@@ -1,6 +1,10 @@
-<div class="col-md-3">
+<ul class="category-list">
+						
+	<?php
+		$cat_args = array(
+			'title_li' => '',
+		);
+		wp_list_categories( $cat_args );
+	?>
 	
-	<?php // TODO: check if there's a better way of showing sub-pages
-    <?php get_hierarchical_pages(); ?>
-    
-</div>
+</ul>

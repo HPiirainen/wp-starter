@@ -8,48 +8,33 @@
 
 get_header(); ?>
 
-	<div class="container-fluid">
-        <div class="row">
-            <?php get_sidebar(); ?>
+<?php if ( have_posts() ) : ?>
 
-			<?php
-			if ( have_posts() ) : ?>
-			
-				<?php the_archive_title( '<h1 class="">', '</h1>' ); ?>
-				<?php
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
-					/* TODO: 
-					 * Check what custom post types are needed and choose which option to use.
-					 * If multiple custom post types, you can create separate templates for each.
-					 * Remember to also include template-parts/content-none.php.
-					 * Other option is to simply print content directly to this template.
-					 */
-					
-					// OPTION 1
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					//get_template_part( 'template-parts/content', get_post_format() );
-					
-					// OPTION 2
-					the_title( '<h2 class="">', '</h2>' );
-					the_content();
-					
-				endwhile;
-
-				// TODO: check if needed and if this function works
-				echo paginate_links();
+	<?php the_archive_title( '<h1>', '</h1>' ); ?>
 	
-			else :
-			
-				get_template_part( 'template-parts/content', 'none' );
-				
-			endif; ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+	
+		<?php // get_template_part( 'template-parts/content', get_post_type() ); ?>
+	
+		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		
+		<?php 		
+			the_title( sprintf( '<h2><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
+			the_excerpt();
+		?>
+		
+	<?php endwhile; ?>
 
-		</div>
+	<div class="pagination">
+		
+		<?php echo paginate_links(); ?>
+		
 	</div>
+
+<?php else : ?>
+
+	<?php get_template_part( 'template-parts/content', 'none' ); ?>
+	
+<?php endif; ?>
 
 <?php get_footer(); ?>
