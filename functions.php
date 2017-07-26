@@ -62,6 +62,17 @@ function new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
+/**
+ * Custom pagination
+ */
+function theme_name_pagination() {
+	$pagination_args = array(
+			'type' => 'list',
+			'prev_text' => __('« <span>Edellinen</span>'),
+			'next_text' => __('<span>Seuraava</span> »'),
+		);
+	return paginate_links( $pagination_args );
+}
 
 // For 2nd level sub-navs only, modify HTML to fit into layout
 function get_hierarchical_pages() {

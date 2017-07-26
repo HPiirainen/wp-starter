@@ -22,7 +22,7 @@
 					
 	<div class="pagination">
 		
-		<?php echo paginate_links(); ?>
+		<?php echo theme_name_pagination(); ?>
 		
 	</div>
 	
