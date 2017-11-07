@@ -3,14 +3,14 @@
 /**
  * Get single post datetime markup
  */
-function theme_name_get_single_post_datetime() {
+function flo_starter_get_single_post_datetime() {
 	return '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date( 'j.n.Y' ) . '</time>';
 }
 
 /**
  * Get single post categories as a linked list
  */
-function theme_name_get_single_post_categories() {
+function flo_starter_get_single_post_categories() {
 	$output = '';
 	$categories = get_the_category();
 	if ( ! empty( $categories ) ) {
@@ -26,7 +26,7 @@ function theme_name_get_single_post_categories() {
 /**
  * Get a formatted date string from start and end date
  */
-function theme_name_formatted_dates( $start_date, $end_date, $separator = '&ndash;' ) {
+function flo_starter_formatted_dates( $start_date, $end_date, $separator = '&ndash;' ) {
 	if ( ! $end_date ) {
 		return date( 'j.n.Y', strtotime( $start_date ) );
 	}
@@ -64,7 +64,7 @@ function theme_name_formatted_dates( $start_date, $end_date, $separator = '&ndas
  *
  * Shows siblings and children, to be used in sidebars if needed
  */
-function theme_name_get_hierarchical_pages() {
+function flo_starter_get_hierarchical_pages() {
 	global $post;
 	$ancestors = get_post_ancestors( $post->ID );
 	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors )-1 ] : $post->ID;

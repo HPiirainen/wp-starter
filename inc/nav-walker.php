@@ -19,10 +19,10 @@ class Flo_Starter_Walker extends Walker_Nav_Menu {
 /**
  * Add custom icons in front of sub-nav items
  */
-function theme_name_filter_walker_sub_menu_item( $output, $item, $depth, $args ) {
+function flo_starter_filter_walker_sub_menu_item( $output, $item, $depth, $args ) {
 	if( $depth > 0 ) {
 		$output .= '<i class="fa fa-arrow-right" aria-hidden="true"></i>';
 	}
 	return $output;
 }
-add_filter( 'walker_nav_menu_start_el', 'theme_name_filter_walker_sub_menu_item', 10, 4 );
+add_filter( 'walker_nav_menu_start_el', 'flo_starter_filter_walker_sub_menu_item', 10, 4 );

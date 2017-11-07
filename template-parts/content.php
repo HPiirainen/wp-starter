@@ -19,7 +19,7 @@
 
 	<?php endif; ?>
 
-	<strong><?php echo theme_name_get_single_post_datetime(); ?></strong>
+	<strong><?php echo flo_starter_get_single_post_datetime(); ?></strong>
 
 	<?php if ( is_single() ) : ?>
 

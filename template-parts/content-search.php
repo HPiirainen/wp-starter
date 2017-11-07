@@ -13,7 +13,7 @@
 
 	<?php if ( get_post_type() === 'post' ) : ?>
 
-		<strong><?php theme_name_get_single_post_datetime(); ?></strong>
+		<strong><?php flo_starter_get_single_post_datetime(); ?></strong>
 
 	<?php endif; ?>
 
