@@ -19,7 +19,7 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
 
 	browserSync.init({
-		proxy: 'http://localhost/client/', // TODO: Change "client" to correct folder
+		proxy: 'http://client.dev',
 		open: false,
 		browser: ['google chrome', 'firefox' , 'safari']
 	});
@@ -54,8 +54,8 @@ gulp.task('pot', function() {
 	return gulp.src('**/*.php')
 		.pipe(sort())
 		.pipe(wpPot({
-			domain: 'theme_name',	// TODO: Change this to theme text-domain
-			destFile: 'theme_name.pot', // TODO: Change filename
+			domain: 'theme_name',
+			destFile: 'theme_name.pot',
 		}))
 		.pipe(gulp.dest('languages'));
 });
