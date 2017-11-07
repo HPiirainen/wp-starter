@@ -1,17 +1,17 @@
 <?php
 
 class Flo_Starter_Walker extends Walker_Nav_Menu {
-	
+
 	/**
 	 * Add custom sub-menu markup
 	 */
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat("\t", $depth);
+		$indent = str_repeat( "\t", $depth );
 		$output .= "\n$indent<div class='drop'><ul class='sub-menu'>\n";
 	}
-	
+
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat("\t", $depth);
+		$indent = str_repeat( "\t", $depth );
 		$output .= "$indent</ul></div>\n";
 	}
 }

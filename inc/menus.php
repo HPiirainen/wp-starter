@@ -1,13 +1,13 @@
 <?php
-	
+
 /**
  * Add 'active' class to current / ancestor nav items
  */
 function theme_name_nav_class( $classes, $item ) {
-    if ( in_array( 'current-menu-item', $classes ) || in_array( 'current-page-ancestor', $classes ) ) {
-             $classes[] = 'active ';
-    }
-    return $classes;
+	if ( in_array( 'current-menu-item', $classes ) || in_array( 'current-page-ancestor', $classes ) ) {
+		$classes[] = 'active ';
+	}
+	return $classes;
 }
 add_filter( 'nav_menu_css_class', 'theme_name_nav_class', 10, 2 );
 

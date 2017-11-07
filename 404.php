@@ -9,13 +9,13 @@
 get_header(); ?>
 
 <div class="error-404">
-		
-	<h1><?php esc_html_e('Sivua ei löytynyt', 'theme_name'); ?></h1>
-	
+
+	<h1><?php esc_html_e( 'Sivua ei löytynyt', 'theme_name' ); ?></h1>
+
 	<p><?php esc_html_e( 'Valitsemaasi sivua ei löytynyt. Voit yrittää löytää etsimäsi sivun alla olevan hakukentän avulla.', 'theme_name' ); ?></p>
-	
+
 	<?php get_search_form(); ?>
-		
+
 </div>
-	
-<?php get_footer(); ?>
+
+<?php get_footer();

@@ -16,29 +16,29 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	
+
 	<div class="logo">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 		    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" height="100" width="100" alt="logo">
         </a>
     </div>
-	
+
 	<?php
-	$menu_args = array(
-	    'theme_location'  => 'primary',
-    	'menu'            => '',
-    	'container'       => 'nav',
-    	'container_class' => '',
-    	'container_id'    => 'nav',
-    	'menu_class'      => '',
-    	'menu_id'         => '',
-    	'echo'            => true,
-    	'before'          => '',
-    	'after'           => '',
-    	'link_before'     => '',
-    	'link_after'      => '',
-    	'depth'           => 0,
-    	'walker'          => '' // new Flo_Starter_Walker()
-    );
-    ?>
+		$menu_args = array(
+			'theme_location'  => 'primary',
+			'menu'            => '',
+			'container'       => 'nav',
+			'container_class' => '',
+			'container_id'    => 'nav',
+			'menu_class'      => '',
+			'menu_id'         => '',
+			'echo'            => true,
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'depth'           => 0,
+			'walker'          => '' // new Flo_Starter_Walker()
+		);
+	?>
 	<?php wp_nav_menu( $menu_args ); ?>
