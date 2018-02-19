@@ -8,6 +8,8 @@
 
 get_header(); ?>
 
+<?php flo_starter_the_yoast_breadcrumb(); ?>
+
 <?php if ( have_posts() ) : ?>
 
 	<h1><?php single_cat_title(); ?></h1>

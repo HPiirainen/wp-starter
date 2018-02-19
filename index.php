@@ -15,6 +15,8 @@ get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
 
+	<?php flo_starter_the_yoast_breadcrumb(); ?>
+
 	<?php if( is_home() && !is_front_page() ) : ?>
 
 		<h1><?php single_post_title(); ?></h1>

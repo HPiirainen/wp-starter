@@ -4,7 +4,7 @@
  * Get single post datetime markup
  */
 function flo_starter_get_single_post_datetime() {
-	return '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date( 'j.n.Y' ) . '</time>';
+	return '<time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date( 'j.n.Y' ) ) . '</time>';
 }
 
 /**
@@ -82,8 +82,8 @@ function flo_starter_get_hierarchical_pages() {
 
 		foreach ( $top_pages as $page ) {
 			echo '<li class="' . ( $post->ID == $page->ID ? "active" : "" ) . '">' .
-				'<a href="' . get_permalink( $page->ID ) . '">' .
-				$page->post_title .
+				'<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' .
+				esc_html( $page->post_title ) .
 				'</a>' .
 				'</li>';
 	
@@ -98,7 +98,7 @@ function flo_starter_get_hierarchical_pages() {
 					echo '<ul class="child-list">';
 					foreach ( $children as $child ) {
 						echo '<li class="' . ( $post->ID == $child->ID ? "active" : "" ) . '">' .
-							'<a href="' . get_permalink( $child->ID ) . '">' . $child->post_title . '</a>' .
+								'<a href="' . esc_url( get_permalink( $child->ID ) ) . '">' . esc_html( $child->post_title ) . '</a>' .
 							'</li>';
 					}
 					echo '</ul>';
@@ -107,4 +107,31 @@ function flo_starter_get_hierarchical_pages() {
 		}
 		echo '</ul></nav></aside>';
 	endif;
+}
+
+function flo_starter_get_category_list() {
+	global $cat;
+
+	$categories = get_categories();
+	
+	if ( $categories ) {
+		echo '<div class="col-12 col-md-3">';
+		echo '<h3>' . esc_html( 'Kategoriat' ) . '</h3>';
+		echo '<div class="nav flex-column nav-pills"><ul class="list-unstyled">';
+			foreach ( $categories as $category ) {
+				echo '<li class="nav-link ' . ( $cat === $category->term_id ? "active" : "" ) . '">' .
+						'<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->cat_name ) . '</a>' .
+					'</li>';
+			}
+		echo '</ul></div>';
+		echo '</div>';
+	}
+}
+
+function flo_starter_the_yoast_breadcrumbs( $prefix = '', $suffix = '' ) {
+	if ( function_exists( 'yoast_breadcrumb' ) ) {
+		yoast_breadcrumb( $prefix, $suffix );
+	} else {
+		echo '';
+	}
 }

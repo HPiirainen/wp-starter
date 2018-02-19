@@ -8,7 +8,7 @@ var wpPot           = require('gulp-wp-pot');
 var imagemin        = require('gulp-imagemin');
 
 var sassIn = './scss/**/*.scss';
-var sassOut = './';
+var sassOut = './css/';
 
 gulp.task('default', ['watch']);
 
@@ -30,9 +30,9 @@ gulp.task('serve', function() {
 });
 
 gulp.task('sass', function() {
-	return gulp.src('scss/style.scss')
+	return gulp.src('scss/main.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass({ outputStyle: 'expanded' })).on('error', sass.logError)
+		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
 		.pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
@@ -47,15 +47,15 @@ gulp.task('vendorsass', function() {
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
         .pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('css/'));
+		.pipe(gulp.dest(sassOut));
 });
 
 gulp.task('pot', function() {
 	return gulp.src('**/*.php')
 		.pipe(sort())
 		.pipe(wpPot({
-			domain: 'theme_name',
-			destFile: 'theme_name.pot',
+			domain: 'flo_starter',
+			destFile: 'flo_starter.pot',
 		}))
 		.pipe(gulp.dest('languages'));
 });

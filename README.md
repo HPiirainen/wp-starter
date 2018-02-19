@@ -1,8 +1,4 @@
-## Theme_name WordPress theme
-
-### Getting started
-
-* search for `theme_name` globally and fix to reflect theme name
+## flo_starter WordPress theme
 
 ### Install dependencies
 

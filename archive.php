@@ -8,9 +8,11 @@
 
 get_header(); ?>
 
+<?php flo_starter_the_yoast_breadcrumb(); ?>
+
 <?php if ( have_posts() ) : ?>
 
-	<?php the_archive_title( '<h1>', '</h1>' ); ?>
+	<h1><?php post_type_archive_title(); ?></h1>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
