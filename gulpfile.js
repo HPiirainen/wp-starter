@@ -4,7 +4,6 @@ var sass            = require('gulp-sass');
 var sourcemaps      = require('gulp-sourcemaps');
 var autoprefixer    = require('gulp-autoprefixer');
 var sort            = require('gulp-sort');
-var wpPot           = require('gulp-wp-pot');
 var imagemin        = require('gulp-imagemin');
 
 var sassIn = './scss/**/*.scss';
@@ -19,7 +18,7 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
 
 	browserSync.init({
-		proxy: 'http://client.dev',
+		proxy: 'http://flo_starter.localhost',
 		open: false,
 		browser: ['google chrome', 'firefox' , 'safari']
 	});
@@ -48,16 +47,6 @@ gulp.task('vendorsass', function() {
 		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
         .pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(sassOut));
-});
-
-gulp.task('pot', function() {
-	return gulp.src('**/*.php')
-		.pipe(sort())
-		.pipe(wpPot({
-			domain: 'flo_starter',
-			destFile: 'flo_starter.pot',
-		}))
-		.pipe(gulp.dest('languages'));
 });
 
 gulp.task('images', function() {

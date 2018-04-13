@@ -16,8 +16,5 @@
 * `vendorsass`
   * run to compile vendor SCSS files
   * for example `bootstrap.scss`
-* `pot`
-  * creates theme language template file into `languages`
-  * *untested*
 * `images`
   * simply optimizes theme images
