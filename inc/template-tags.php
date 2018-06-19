@@ -128,7 +128,7 @@ function flo_starter_get_category_list() {
 	}
 }
 
-function flo_starter_the_yoast_breadcrumbs( $prefix = '', $suffix = '' ) {
+function flo_starter_the_yoast_breadcrumb( $prefix = '', $suffix = '' ) {
 	if ( function_exists( 'yoast_breadcrumb' ) ) {
 		yoast_breadcrumb( $prefix, $suffix );
 	} else {
