@@ -84,8 +84,7 @@ function flo_starter_get_hierarchical_pages() {
 			echo '<li class="' . ( $post->ID == $page->ID ? "active" : "" ) . '">' .
 				'<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' .
 				esc_html( $page->post_title ) .
-				'</a>' .
-				'</li>';
+				'</a>';
 	
 			if ( $post->ID == $page->ID || $post->post_parent == $page->ID ) {
 				$children_args = array(
@@ -104,6 +103,7 @@ function flo_starter_get_hierarchical_pages() {
 					echo '</ul>';
 				}
 			}
+			echo '</li>';
 		}
 		echo '</ul></nav></aside>';
 	endif;
