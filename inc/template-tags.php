@@ -2,6 +2,8 @@
 
 /**
  * Display pagination
+ *
+ * @return string
  */
 function flo_starter_the_pagination() {
 	echo get_the_posts_pagination( array( 'mid_size'  => 3 ) );
@@ -9,45 +11,41 @@ function flo_starter_the_pagination() {
 
 /**
  * Get single post datetime markup
+ *
+ * @return string
  */
 function flo_starter_get_single_post_datetime() {
 	return '<time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date( 'j.n.Y' ) ) . '</time>';
 }
 
 /**
- * Get single post categories as a linked list
+ * Get meta data for a single post
+ *
+ * @param bool $display_terms Display post terms?
+ * @param string $taxonomy Taxonomy name
+ * @param string $separator Separator for elements
+ * @param string $term_separator Separator for terms
+ * @return string
  */
-function flo_starter_get_single_post_categories() {
-	$output = '';
-	$categories = get_the_category();
-	if ( ! empty( $categories ) ) {
-		$output .= '<ul class="post-terms post-category">';
-		foreach ( $categories as $cat ) {
-			$output .= '<li><a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . esc_html( $cat->name ) . '</a></li>';
+function flo_starter_get_single_post_meta_data( $display_terms = true, $taxonomy = 'category', $separator = ' | ', $term_separator = ', ' ) {
+	$datetime = flo_starter_get_single_post_datetime();
+	$output = '<span class="post-datetime">' . $datetime . '</span>';
+	if ( $display_terms ) {
+		$term_list = get_the_term_list( get_the_id(), $taxonomy, '', $term_separator, '' );
+		if ( $term_list ) {
+			$output .= $separator . '<span class="post-terms post-' . esc_attr( $taxonomy ) . '">' . $term_list . '</span>';
 		}
-		$output .= '</ul>';
-	}
-	return $output;
-}
-
-/**
- * Get single post terms as a linked list
- */
-function flo_starter_get_single_post_terms( $taxonomy = 'category' ) {
-	$output = '';
-	$terms = get_the_terms( get_the_id(), $taxonomy );
-	if ( ! empty( $terms ) ) {
-		$output .= '<ul class="post-terms post-' . esc_attr( $taxonomy ) . '">';
-		foreach ( $terms as $term ) {
-			$output .= '<li><a href="' . esc_url( get_term_link( $term->term_id, $taxonomy ) ) . '">' . esc_html( $term->name ) . '</a></li>';
-		}
-		$output .= '</ul>';
 	}
 	return $output;
 }
 
 /**
  * Get a formatted date string from start and end date
+ *
+ * @param string $start_date
+ * @param string $end_date
+ * @param string $separator
+ * @return string
  */
 function flo_starter_formatted_dates( $start_date, $end_date, $separator = '&ndash;' ) {
 	if ( ! $end_date ) {
