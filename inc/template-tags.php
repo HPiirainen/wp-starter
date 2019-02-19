@@ -39,7 +39,7 @@ function flo_starter_get_single_post_terms( $taxonomy = 'category' ) {
 	if ( ! empty( $terms ) ) {
 		$output .= '<ul class="post-terms post-' . esc_attr( $taxonomy ) . '">';
 		foreach ( $terms as $term ) {
-			$output .= '<li><a href="' . esc_url( get_category_link( $term->term_id ) ) . '">' . esc_html( $term->name ) . '</a></li>';
+			$output .= '<li><a href="' . esc_url( get_term_link( $term->term_id, $taxonomy ) ) . '">' . esc_html( $term->name ) . '</a></li>';
 		}
 		$output .= '</ul>';
 	}
