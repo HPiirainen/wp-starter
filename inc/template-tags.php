@@ -21,9 +21,25 @@ function flo_starter_get_single_post_categories() {
 	$output = '';
 	$categories = get_the_category();
 	if ( ! empty( $categories ) ) {
-		$output .= '<ul class="post-categories">';
+		$output .= '<ul class="post-terms post-category">';
 		foreach ( $categories as $cat ) {
 			$output .= '<li><a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . esc_html( $cat->name ) . '</a></li>';
+		}
+		$output .= '</ul>';
+	}
+	return $output;
+}
+
+/**
+ * Get single post terms as a linked list
+ */
+function flo_starter_get_single_post_terms( $taxonomy = 'category' ) {
+	$output = '';
+	$terms = get_the_terms( get_the_id(), $taxonomy );
+	if ( ! empty( $terms ) ) {
+		$output .= '<ul class="post-terms post-' . esc_attr( $taxonomy ) . '">';
+		foreach ( $terms as $term ) {
+			$output .= '<li><a href="' . esc_url( get_category_link( $term->term_id ) ) . '">' . esc_html( $term->name ) . '</a></li>';
 		}
 		$output .= '</ul>';
 	}
