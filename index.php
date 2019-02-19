@@ -29,7 +29,11 @@ get_header(); ?>
 
 	<?php endwhile; ?>
 
-	<?php the_posts_pagination( array( 'mid_size'  => 3 ) ); ?>
+	<div class="pagination">
+		
+		<?php flo_starter_the_pagination(); ?>
+		
+	</div>
 
 <?php else : ?>
 

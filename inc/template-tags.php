@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Display pagination
+ */
+function flo_starter_the_pagination() {
+	echo get_the_posts_pagination( array( 'mid_size'  => 3 ) );
+}
+
+/**
  * Get single post datetime markup
  */
 function flo_starter_get_single_post_datetime() {
