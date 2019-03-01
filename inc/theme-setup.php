@@ -16,6 +16,10 @@ function flo_starter_theme_setup() {
 	add_theme_support( 'editor-font-sizes', array( array() ) );
 	add_theme_support( 'disable-custom-font-sizes' );
 
+	// Use editor stylesheet
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'editor-style.css' );
+
 	// Register menus
 	register_nav_menus(
 		array(

@@ -1,0 +1,9 @@
+/* Modifying editor title requires a small hack */
+.editor-post-title__block .editor-post-title__input {
+
+}
+
+/* Otherwise normal selectors can be used */
+body {
+
+}
