@@ -11,6 +11,7 @@ function flo_starter_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 	// Gutenberg
+	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'editor-color-palette', array( array() ) );
 	add_theme_support( 'disable-custom-colors' );
 	add_theme_support( 'editor-font-sizes', array( array() ) );
