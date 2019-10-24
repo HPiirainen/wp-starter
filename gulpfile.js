@@ -9,23 +9,24 @@ var imagemin        = require('gulp-imagemin');
 
 var sassIn = './scss/**/*.scss';
 var sassOut = './css/';
-var vendorSassIn = ['scss/boot.scss'];
-var vendorSassIgnore = ['!scss/boot.scss'];
+var vendorSassIn = ['scss/boot*.scss'];
+var vendorSassIgnore = ['!scss/boot*.scss'];
 
-gulp.task('default', ['watch']);
+/**
+ * Task functionalities as named functions to avoid
+ * "Starting anonymous"
+ */
+var watchTask = function() {
+	gulp.watch(sassIn, gulp.series(sassTask));
+};
 
-gulp.task('watch', function() {
-	gulp.watch(sassIn, ['sass']);
-});
-
-gulp.task('serve', function() {
-
+var serveTask = function() {
 	browserSync.init({
 		files: [
 			'{inc,template-parts}/**/*.php',
 			'*.php'
 		],
-		proxy: 'http://flo_starter.localhost',
+		proxy: 'http://wp-starter-test.localhost',
 		open: 'local',
 		browser: ['google chrome'],
 		snippetOptions: {
@@ -33,12 +34,9 @@ gulp.task('serve', function() {
 			blacklist: ['/wp-admin/**']
 		}
 	});
+};
 
-	gulp.watch(sassIn, ['sass']);
-
-});
-
-gulp.task('sass', function() {
+var sassTask = function() {
 	return gulp.src(['scss/*.scss'].concat(vendorSassIgnore))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -54,18 +52,28 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(sassOut))
 		.pipe(browserSync.stream({match: '**/*.css'}));
-});
+};
 
-gulp.task('vendorsass', function() {
+var vendorSassTask = function() {
 	return gulp.src(vendorSassIn)
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
         .pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(sassOut));
-});
+};
 
-gulp.task('images', function() {
+var imagesTask = function() {
 	return gulp.src('./images/*')
 		.pipe(imagemin())
 		.pipe(gulp.dest('./images'));
-});
+};
+
+/**
+ * Task definitions
+ */
+gulp.task('watch', gulp.series(watchTask));
+gulp.task('serve', gulp.parallel(serveTask, watchTask));
+gulp.task('sass', gulp.series(sassTask));
+gulp.task('vendorsass', gulp.series(vendorSassTask));
+gulp.task('images', gulp.series(imagesTask));
+gulp.task('default', gulp.series(watchTask));
