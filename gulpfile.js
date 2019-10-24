@@ -3,7 +3,7 @@ var browserSync     = require('browser-sync').create();
 var sass            = require('gulp-sass');
 var sourcemaps      = require('gulp-sourcemaps');
 var autoprefixer    = require('gulp-autoprefixer');
-var cssnano			= require('gulp-cssnano');
+var cleancss		= require('gulp-clean-css');
 var sort            = require('gulp-sort');
 var imagemin        = require('gulp-imagemin');
 
@@ -46,9 +46,7 @@ var sassTask = function() {
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(cssnano(), {
-	        safe: true
-        })
+        .pipe(cleancss())
         .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(sassOut))
 		.pipe(browserSync.stream({match: '**/*.css'}));
