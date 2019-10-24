@@ -1,0 +1,30 @@
+/* ==========================================================================
+ # Gutenberg Editor (back-end)
+========================================================================== */
+
+/* Variables
+----------------------------------------------- */
+
+@import "base/variables";
+
+/* Mixins
+----------------------------------------------- */
+
+/* Generic
+----------------------------------------------- */
+
+/* Blocks
+----------------------------------------------- */
+
+.edit-post-visual-editor .editor-block-list__block {
+  @import "base/typography";
+}
+
+// hide font-size selection
+.components-panel__body.blocks-font-size .components-base-control:first-of-type {
+  display: none;
+}
+
+// editor title
+.editor-post-title__block .editor-post-title__input {
+}
