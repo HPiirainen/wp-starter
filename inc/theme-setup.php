@@ -12,9 +12,9 @@ function flo_starter_after_setup_theme() {
 
 	// Gutenberg
 	add_theme_support( 'responsive-embeds' );
-	add_theme_support( 'editor-color-palette', [ [] ] );
+	add_theme_support( 'editor-color-palette' );
 	add_theme_support( 'disable-custom-colors' );
-	add_theme_support( 'editor-font-sizes', [ [] ] );
+	add_theme_support( 'editor-font-sizes', [[]] );
 	add_theme_support( 'disable-custom-font-sizes' );
 
 	// Register menus
