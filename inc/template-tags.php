@@ -86,9 +86,10 @@ function flo_starter_formatted_dates( $start_date, $end_date, $separator = '&nda
  * Shows siblings and children, to be used in sidebars if needed
  */
 function flo_starter_get_hierarchical_pages() {
-	global $post;
-	$ancestors = get_post_ancestors( $post->ID );
-	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors )-1 ] : $post->ID;
+	$current_id = get_the_id();
+	$ancestors = get_post_ancestors( $current_id );
+	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors )-1 ] : $current_id;
+	$output = '';
 
 	$args = array(
 		'parent' => $top_level,
@@ -96,38 +97,40 @@ function flo_starter_get_hierarchical_pages() {
 	);
 	$top_pages = get_pages( $args );
 
-	if ( $top_pages ) :
-		echo '<aside id="sidebar" class="col-sm-4 col-xs-12">' .
-			'<nav class="side-nav text-uppercase">' .
-			'<ul>';
+	if ( $top_pages ) {
+		$output .= '<ul>';
 
 		foreach ( $top_pages as $page ) {
-			echo '<li class="' . ( $post->ID == $page->ID ? "active" : "" ) . '">' .
-				'<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' .
-				esc_html( $page->post_title ) .
-				'</a>';
-	
-			if ( $post->ID == $page->ID || $post->post_parent == $page->ID ) {
+			$li_classes = [];
+			$child_list = '';
+			if ( $current_id === $page->ID || wp_get_post_parent_id( $current_id ) === $page->ID ) {
+				$li_classes[] = 'active';
 				$children_args = array(
 					'sort_column' => 'menu_order',
 					'child_of' => $page->ID,
 				);
 				$children = get_pages( $children_args );
-	
 				if ( $children ) {
-					echo '<ul class="child-list">';
+					$li_classes[] = 'has-children';
+					$child_list .= '<ul>';
 					foreach ( $children as $child ) {
-						echo '<li class="' . ( $post->ID == $child->ID ? "active" : "" ) . '">' .
-								'<a href="' . esc_url( get_permalink( $child->ID ) ) . '">' . esc_html( $child->post_title ) . '</a>' .
-							'</li>';
+						$child_list .= '<li class="' . ( $current_id === $child->ID ? "active" : "" ) . '">';
+						$child_list .= '<a href="' . esc_url( get_permalink( $child->ID ) ) . '">' . esc_html( $child->post_title ) . '</a>';
+						$child_list .= '</li>';
 					}
-					echo '</ul>';
+					$child_list .= '</ul>';
 				}
 			}
-			echo '</li>';
+			$output .= '<li class="' . esc_attr( implode( ' ', $li_classes ) ) . '">';
+			$output .= '<a href="' . esc_url( get_permalink( $page->ID ) ) . '">';
+			$output .= esc_html( $page->post_title );
+			$output .= '</a>';
+			$output .= $child_list;
+			$output .= '</li>';
 		}
-		echo '</ul></nav></aside>';
-	endif;
+		$output .= '</ul>';
+	}
+	return $output;
 }
 
 function flo_starter_get_category_list() {
