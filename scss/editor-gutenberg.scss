@@ -2,29 +2,42 @@
  # Gutenberg Editor (back-end)
 ========================================================================== */
 
-/* Variables
------------------------------------------------ */
-
-@import "base/variables";
-
-/* Mixins
------------------------------------------------ */
-
-/* Generic
------------------------------------------------ */
-
-/* Blocks
------------------------------------------------ */
+// @import "bootstrap-custom";
 
 .edit-post-visual-editor .editor-block-list__block {
-  @import "base/typography";
+// 	font-family: $font-family-base;
+	font-size: 15px;
+	line-height: 1.8;
+	
+	.wp-block-heading {
+		h2 {
+			font-size: 18px;
+			line-height: 1.5;
+		}
+		
+		h3 {
+			font-size: 15px;
+			line-height: 1.667;
+		}
+	}
+	
+	.block-editor-rich-text__editable a,
+	.wp-block-file__textlink {
+// 		color: $primary;
+		
+		&:hover {
+// 			color: darken($primary, 15%);
+		}
+	}
 }
 
-// hide font-size selection
-.components-panel__body.blocks-font-size .components-base-control:first-of-type {
-  display: none;
+.wp-block {
+/* Content width + 30px for margins */
+// 	max-width: calc(668px + 30px);
 }
 
 // editor title
 .editor-post-title__block .editor-post-title__input {
+// 	font-family: $font-family-base;
+	font-size: 32px;
 }
