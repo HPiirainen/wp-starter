@@ -1,2 +1,2 @@
-
+@media print{body{margin:2cm;font-size:12pt}footer,header{display:none}a[href^=http]:after{content:" (" attr(href) ")"}}
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,15 @@
+@media print {
+	body {
+        margin: 2cm;
+        font-size: 12pt;
+    }
+    
+    header,
+    footer {
+	    display: none;
+    }
+    
+    a[href^=http]:after {
+		content:" (" attr(href) ")";
+	}
+}
