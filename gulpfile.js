@@ -1,34 +1,35 @@
-var gulp            = require('gulp');
-var browserSync     = require('browser-sync').create();
-var sass            = require('gulp-sass');
-var sourcemaps      = require('gulp-sourcemaps');
-var autoprefixer    = require('gulp-autoprefixer');
-var cleancss		= require('gulp-clean-css');
-var sort            = require('gulp-sort');
-var imagemin        = require('gulp-imagemin');
+const gulp = require('gulp');
 
-var sassIn = './scss/**/*.scss';
-var sassOut = './css/';
-var vendorSassIn = ['scss/boot*.scss'];
-var vendorSassIgnore = ['!scss/boot*.scss'];
+const autoprefixer = require('gulp-autoprefixer');
+const beeper = require('beeper');
+const browserSync = require('browser-sync').create();
+const cleancss = require('gulp-clean-css');
+const imagemin = require('gulp-imagemin');
+const plumber = require('gulp-plumber');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const touch = require('gulp-touch-cmd');
+
+const sassIn = './scss/**/*.scss';
+const sassOut = './css/';
+const vendorSassIn = ['scss/boot*.scss'];
+const vendorSassIgnore = ['!scss/boot*.scss'];
 
 /**
  * Task functionalities as named functions to avoid
  * "Starting anonymous"
  */
-var watchTask = function() {
-	gulp.watch(sassIn, gulp.series(sassTask));
+const watchTask = () => {
+	return gulp.watch(sassIn, gulp.series(sassTask));
 };
 
-var serveTask = function() {
-	browserSync.init({
+const serveTask = () => {
+	return browserSync.init({
 		files: [
 			'{inc,template-parts}/**/*.php',
 			'*.php'
 		],
-		proxy: 'http://wp-starter-test.localhost',
-		open: 'local',
-		browser: ['google chrome'],
+		proxy: 'http://flo_starter.localhost',
 		snippetOptions: {
 			whitelist: ['/wp-admin/admin-ajax.php'],
 			blacklist: ['/wp-admin/**']
@@ -36,23 +37,24 @@ var serveTask = function() {
 	});
 };
 
-var sassTask = function() {
+const sassTask = () => {
 	return gulp.src(['scss/*.scss'].concat(vendorSassIgnore))
+		.pipe(plumber(errorHandler))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'nested'
-		})).on('error', sass.logError)
+		}))
 		.pipe(autoprefixer({
-            browsers: ['last 4 versions'],
             cascade: false
         }))
         .pipe(cleancss())
         .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(sassOut))
+		.pipe(touch())
 		.pipe(browserSync.stream({match: '**/*.css'}));
 };
 
-var vendorSassTask = function() {
+const vendorSassTask = () => {
 	return gulp.src(vendorSassIn)
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
@@ -60,11 +62,13 @@ var vendorSassTask = function() {
 		.pipe(gulp.dest(sassOut));
 };
 
-var imagesTask = function() {
+const imagesTask = () => {
 	return gulp.src('./images/*')
 		.pipe(imagemin())
 		.pipe(gulp.dest('./images'));
 };
+
+const errorHandler = () => beeper(3);
 
 /**
  * Task definitions
