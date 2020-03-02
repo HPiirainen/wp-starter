@@ -96,16 +96,16 @@ function flo_starter_get_category_list() {
 	global $cat;
 
 	$categories = get_categories();
-	
+
 	if ( $categories ) {
 		echo '<div class="col-12 col-md-3">';
 		echo '<h3>' . esc_html( 'Kategoriat' ) . '</h3>';
 		echo '<div class="nav flex-column nav-pills"><ul class="list-unstyled">';
-			foreach ( $categories as $category ) {
-				echo '<li class="nav-link ' . ( $cat === $category->term_id ? "active" : "" ) . '">' .
-						'<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->cat_name ) . '</a>' .
-					'</li>';
-			}
+		foreach ( $categories as $category ) {
+			echo '<li class="nav-link ' . ( $cat === $category->term_id ? "active" : "" ) . '">' .
+				'<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->cat_name ) . '</a>' .
+				'</li>';
+		}
 		echo '</ul></div>';
 		echo '</div>';
 	}

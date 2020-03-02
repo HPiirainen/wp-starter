@@ -17,7 +17,7 @@ get_header(); ?>
 		<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
 
 	<?php endwhile; ?>
-		
+
 	<?php flo_starter_the_pagination(); ?>
 
 <?php else : ?>

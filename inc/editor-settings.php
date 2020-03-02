@@ -7,11 +7,11 @@
  */
 function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	$blocks = [];
-	
+
 	/**
-	* Common blocks
-	*/
-// 	$blocks[] = 'core/audio';
+	 * Common blocks
+	 */
+	//  $blocks[] = 'core/audio';
 	$blocks[] = 'core/cover';
 	$blocks[] = 'core/file';
 	$blocks[] = 'core/gallery';
@@ -20,42 +20,42 @@ function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	$blocks[] = 'core/list';
 	$blocks[] = 'core/paragraph';
 	$blocks[] = 'core/quote';
-// 	$blocks[] = 'core/video';
-		
+	//  $blocks[] = 'core/video';
+
 	/**
-	* Formatting
-	*/
-// 	$blocks[] = 'core/code';
+	 * Formatting
+	 */
+	//  $blocks[] = 'core/code';
 	$blocks[] = 'core/freeform'; // classic editor
 	$blocks[] = 'core/html';
-// 	$blocks[] = 'core/preformatted';
-// 	$blocks[] = 'core/pullquote';
+	//  $blocks[] = 'core/preformatted';
+	//  $blocks[] = 'core/pullquote';
 	$blocks[] = 'core/table';
-// 	$blocks[] = 'core/verse';
-	
+	//  $blocks[] = 'core/verse';
+
 	/**
-	* Layout
-	*/
+	 * Layout
+	 */
 	$blocks[] = 'core/button';
 	$blocks[] = 'core/columns';
 	$blocks[] = 'core/media-text';
-// 	$blocks[] = 'core/more';
-// 	$blocks[] = 'core/nextpage';
+	//  $blocks[] = 'core/more';
+	//  $blocks[] = 'core/nextpage';
 	$blocks[] = 'core/separator';
-// 	$blocks[] = 'core/spacer';
-	
+	//  $blocks[] = 'core/spacer';
+
 	/**
-	* Widgets
-	*/
-// 	$blocks[] = 'core/archives';
-// 	$blocks[] = 'core/categories';
-// 	$blocks[] = 'core/latest-comments';
-// 	$blocks[] = 'core/latest-posts';
+	 * Widgets
+	 */
+	//  $blocks[] = 'core/archives';
+	//  $blocks[] = 'core/categories';
+	//  $blocks[] = 'core/latest-comments';
+	//  $blocks[] = 'core/latest-posts';
 	$blocks[] = 'core/shortcode';
-	
+
 	/**
-	* Embeds
-	*/
+	 * Embeds
+	 */
 	$blocks[] = 'core/embed';
 	$blocks[] = 'core-embed/twitter';
 	$blocks[] = 'core-embed/youtube';
@@ -68,20 +68,20 @@ function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	$blocks[] = 'core-embed/issuu';
 	$blocks[] = 'core-embed/slideshare';
 	// a lot of other services
-	
+
 	/**
-	* Reusable blocks
-	*/
+	 * Reusable blocks
+	 */
 	$blocks[] = 'core/block';
-	
+
 	/**
-	* Plugins
-	*/
-	
+	 * Plugins
+	 */
+
 	/**
-	* Custom
-	*/
-	
+	 * Custom
+	 */
+
 	return $blocks;
 }
 // add_filter( 'allowed_block_types', 'flo_starter_allowed_block_types', 10, 2 );

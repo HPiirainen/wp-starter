@@ -32,7 +32,7 @@ add_action( 'wp_enqueue_scripts', 'flo_starter_enqueue_scripts' );
 function flo_starter_block_editor_assets() {
 	// Google font
 	wp_enqueue_style( 'flo_starter-gutenberg-fonts', esc_url_raw( flo_starter_get_font_url() ) );
-	
+
 	// Editor styles
 	wp_enqueue_style( 'flo_starter-gutenberg-styles', get_theme_file_uri( 'css/editor-gutenberg.css' ), array(), filemtime( get_theme_file_path( 'css/editor-gutenberg.css' ) ) );
 }

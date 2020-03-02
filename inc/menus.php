@@ -9,7 +9,7 @@ function flo_starter_nav_class( $classes, $item ) {
 		'current-menu-ancestor',
 		'current-page-ancestor',
 	);
-	$existing_classes = array_intersect( $active_classes, $classes );	
+	$existing_classes = array_intersect( $active_classes, $classes );
 	if ( count( $existing_classes ) > 0 ) {
 		$classes[] = 'active';
 	}

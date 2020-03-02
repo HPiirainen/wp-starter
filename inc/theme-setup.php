@@ -16,7 +16,7 @@ function flo_starter_after_setup_theme() {
 		'caption',
 		'script',
 		'style'
-	] );
+		] );
 
 	// Gutenberg
 	add_theme_support( 'responsive-embeds' );
