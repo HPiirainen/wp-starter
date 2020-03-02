@@ -40,47 +40,6 @@ function flo_starter_get_single_post_meta_data( $display_terms = true, $taxonomy
 }
 
 /**
- * Get a formatted date string from start and end date
- *
- * @param string $start_date
- * @param string $end_date
- * @param string $separator
- * @return string
- */
-function flo_starter_formatted_dates( $start_date, $end_date, $separator = '&ndash;' ) {
-	if ( ! $end_date ) {
-		return date( 'j.n.Y', strtotime( $start_date ) );
-	}
-
-	if ( $start_date > $end_date ) {
-		return $separator;
-	}
-
-	$start_date = date( 'j.n.Y', strtotime( $start_date ) );
-	$end_date = date( 'j.n.Y', strtotime( $end_date ) );
-	$start_year = date( 'Y', strtotime( $start_date ) );
-	$start_month = date( 'n', strtotime( $start_date ) );
-	$start_day = date( 'j', strtotime( $start_date ) );
-	$end_year = date( 'Y', strtotime( $end_date ) );
-	$end_month = date( 'n', strtotime( $end_date ) );
-	$end_day = date( 'j', strtotime( $end_date ) );
-
-	if ( $start_year !== $end_year ) {
-		return $start_date . $separator . $end_date;
-	}
-
-	if ( $start_month !== $end_month ) {
-		return date( 'j.n.', strtotime( $start_date ) ) . $separator . $end_date;
-	}
-
-	if ( $start_day !== $end_day ) {
-		return date( 'j.', strtotime( $start_date ) ) . $separator . $end_date;
-	}
-
-	return $start_date;
-}
-
-/**
  * Create sub-nav
  *
  * Shows siblings and children, to be used in sidebars if needed

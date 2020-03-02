@@ -8,8 +8,6 @@
 
 get_header(); ?>
 
-<?php flo_starter_the_yoast_breadcrumb(); ?>
-
 <h1><?php printf( esc_html__( 'Hakutulokset: %s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 
 <?php if ( have_posts() ) : ?>
@@ -23,12 +21,8 @@ get_header(); ?>
 		<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
 
 	<?php endwhile; ?>
-
-	<div class="pagination">
 		
-		<?php flo_starter_the_pagination(); ?>
-		
-	</div>
+	<?php flo_starter_the_pagination(); ?>
 
 <?php else : ?>
 

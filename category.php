@@ -8,8 +8,6 @@
 
 get_header(); ?>
 
-<?php flo_starter_the_yoast_breadcrumb(); ?>
-
 <?php if ( have_posts() ) : ?>
 
 	<h1><?php single_cat_title(); ?></h1>
@@ -20,11 +18,7 @@ get_header(); ?>
 
 	<?php endwhile; ?>
 
-	<div class="pagination">
-		
-		<?php flo_starter_the_pagination(); ?>
-		
-	</div>
+	<?php flo_starter_the_pagination(); ?>
 
 <?php else : ?>
 
