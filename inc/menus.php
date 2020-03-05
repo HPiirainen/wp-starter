@@ -4,11 +4,11 @@
  * Add 'active' class to current / ancestor nav items
  */
 function flo_starter_nav_class( $classes, $item ) {
-	$active_classes = array(
+	$active_classes = [
 		'current-menu-item',
 		'current-menu-ancestor',
 		'current-page-ancestor',
-	);
+	];
 	$existing_classes = array_intersect( $active_classes, $classes );
 	if ( count( $existing_classes ) > 0 ) {
 		$classes[] = 'active';

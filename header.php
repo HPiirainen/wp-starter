@@ -24,7 +24,7 @@
     </div>
 
 	<?php
-		$menu_args = array(
+		$menu_args = [
 			'theme_location'  => 'primary',
 			'menu'            => '',
 			'container'       => 'nav',
@@ -39,6 +39,6 @@
 			'link_after'      => '',
 			'depth'           => 0,
 			'walker'          => '' // new Flo_Starter_Walker()
-		);
+		];
 	?>
 	<?php wp_nav_menu( $menu_args ); ?>

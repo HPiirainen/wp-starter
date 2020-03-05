@@ -32,9 +32,9 @@ function flo_starter_after_setup_theme() {
 
 	// Register menus
 	register_nav_menus(
-		array(
+		[
 			'primary' => esc_html__( 'Primary' ),
-		)
+		]
 	);
 
 	// Change default WordPress image sizes

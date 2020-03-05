@@ -6,7 +6,7 @@
  * @return string
  */
 function flo_starter_the_pagination() {
-	echo get_the_posts_pagination( array( 'mid_size'  => 3 ) );
+	echo get_the_posts_pagination( [ 'mid_size'  => 3 ] );
 }
 
 /**
@@ -50,10 +50,10 @@ function flo_starter_get_hierarchical_pages() {
 	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors )-1 ] : $current_id;
 	$output = '';
 
-	$args = array(
+	$args = [
 		'parent' => $top_level,
 		'sort_column' => 'menu_order',
-	);
+	];
 	$top_pages = get_pages( $args );
 
 	if ( $top_pages ) {
@@ -64,10 +64,10 @@ function flo_starter_get_hierarchical_pages() {
 			$child_list = '';
 			if ( $current_id === $page->ID || wp_get_post_parent_id( $current_id ) === $page->ID ) {
 				$li_classes[] = 'active';
-				$children_args = array(
+				$children_args = [
 					'sort_column' => 'menu_order',
 					'child_of' => $page->ID,
-				);
+				];
 				$children = get_pages( $children_args );
 				if ( $children ) {
 					$li_classes[] = 'has-children';

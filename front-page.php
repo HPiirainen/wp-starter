@@ -15,9 +15,9 @@ get_header(); ?>
 	<?php the_content(); ?>
 
 	<?php
-		$articles_args = array(
+		$articles_args = [
 			'posts_per_page' => 6,
-		);
+		];
 		$article_query = new WP_Query( $articles_args );
 	?>
 
