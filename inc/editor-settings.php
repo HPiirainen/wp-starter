@@ -12,7 +12,7 @@ function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	 * Common blocks
 	 */
 	//  $blocks[] = 'core/audio';
-	$blocks[] = 'core/cover';
+	//  $blocks[] = 'core/cover';
 	$blocks[] = 'core/file';
 	$blocks[] = 'core/gallery';
 	$blocks[] = 'core/heading';
@@ -29,7 +29,7 @@ function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	$blocks[] = 'core/freeform'; // classic editor
 	$blocks[] = 'core/html';
 	//  $blocks[] = 'core/preformatted';
-	//  $blocks[] = 'core/pullquote';
+	$blocks[] = 'core/pullquote';
 	$blocks[] = 'core/table';
 	//  $blocks[] = 'core/verse';
 
@@ -38,6 +38,7 @@ function flo_starter_allowed_block_types( $allowed_block_types, $post ) {
 	 */
 	$blocks[] = 'core/button';
 	$blocks[] = 'core/columns';
+	$blocks[] = 'core/group';
 	$blocks[] = 'core/media-text';
 	//  $blocks[] = 'core/more';
 	//  $blocks[] = 'core/nextpage';
