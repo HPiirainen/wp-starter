@@ -37,6 +37,6 @@ function flo_starter_block_editor_assets() {
 	wp_enqueue_style( 'flo_starter-gutenberg-styles', get_theme_file_uri( 'css/editor-gutenberg.css' ), [], filemtime( get_theme_file_path( 'css/editor-gutenberg.css' ) ) );
 	
 	// Editor script
-	wp_enqueue_script( 'flo_starter-gutenberg-script', get_theme_file_uri( 'css/editor-gutenberg.js' ), ['wp-i18n', 'wp-blocks', 'wp-dom-ready'], filemtime( get_theme_file_path( 'js/editor-gutenberg.js' ) ) );
+	wp_enqueue_script( 'flo_starter-gutenberg-script', get_theme_file_uri( 'js/editor-gutenberg.js' ), ['wp-blocks', 'wp-dom-ready', 'wp-edit-post'], filemtime( get_theme_file_path( 'js/editor-gutenberg.js' ) ) );
 }
 add_action( 'enqueue_block_editor_assets', 'flo_starter_block_editor_assets' );
