@@ -1,6 +1,6 @@
 wp.domReady(function() {
 
-	unregisterStyles( 'core/button', ['outline', 'squared'] );
+	unregisterStyles( 'core/button', ['outline'] );
 	unregisterStyles( 'core/pullquote', ['solid-color'] );
 	unregisterStyles( 'core/quote', ['large'] );
 	unregisterStyles( 'core/separator', ['dots', 'wide'] );
