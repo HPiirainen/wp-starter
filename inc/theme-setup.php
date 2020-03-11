@@ -24,6 +24,8 @@ function flo_starter_after_setup_theme() {
 	add_theme_support( 'disable-custom-colors' );
 	add_theme_support( 'editor-font-sizes', [] );
 	add_theme_support( 'disable-custom-font-sizes' );
+	add_theme_support( 'disable-custom-gradients' );
+	add_theme_support( 'editor-gradient-presets', [] );
 
 	// Set max content width
 	if ( ! isset ( $content_width ) ) {
