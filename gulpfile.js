@@ -83,8 +83,6 @@ const imagesTask = () => {
 		.pipe(gulp.dest('./images'));
 };
 
-const errorHandler = () => beeper(3);
-
 /**
  * Task definitions
  */
