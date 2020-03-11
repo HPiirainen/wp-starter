@@ -1,10 +1,10 @@
 const gulp = require('gulp');
 
 const autoprefixer = require('gulp-autoprefixer');
-const beeper = require('beeper');
 const browserSync = require('browser-sync').create();
 const cleancss = require('gulp-clean-css');
 const imagemin = require('gulp-imagemin');
+const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -14,6 +14,19 @@ const sassIn = './scss/**/*.scss';
 const sassOut = './css/';
 const vendorSassIn = ['scss/boot*.scss'];
 const vendorSassIgnore = ['!scss/boot*.scss'];
+
+/**
+ * Error handler for sass task
+ * Uses OS notification and sound
+ */
+const errorHandler = function(err) {
+	notify.onError({
+		title: 'Gulp error in flo_starter',
+		message: err.message,
+		sound: 'Ping',
+	})(err);
+	this.emit('end');
+}
 
 /**
  * Task functionalities as named functions to avoid
@@ -56,6 +69,7 @@ const sassTask = () => {
 
 const vendorSassTask = () => {
 	return gulp.src(vendorSassIn)
+		.pipe(plumber(errorHandler))
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
         .pipe(sourcemaps.write('./'))
@@ -64,6 +78,7 @@ const vendorSassTask = () => {
 
 const imagesTask = () => {
 	return gulp.src('./images/*')
+		.pipe(plumber(errorHandler))
 		.pipe(imagemin())
 		.pipe(gulp.dest('./images'));
 };
