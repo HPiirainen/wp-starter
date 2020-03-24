@@ -25,7 +25,7 @@ function flo_starter_wp_nav_menu_objects( $items, $args ) {
 	$theme_location = 'primary';
 	if ( function_exists( 'get_field' ) ) {
 		if ( isset( $args->theme_location ) && $args->theme_location === $theme_location ) {
-			foreach( $items as &$item ) {
+			foreach ( $items as &$item ) {
 				$class = get_field( 'icon-class', $item );
 				if ( $class ) {
 					$item->title = '<i class="' . $class . '"></i> ' . $item->title;

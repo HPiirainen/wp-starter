@@ -15,19 +15,22 @@ get_header(); ?>
 	<?php the_content(); ?>
 
 	<?php
-		$articles_args = [
-			'posts_per_page' => 6,
-		];
-		$article_query = new WP_Query( $articles_args );
+	$articles_args = [
+		'posts_per_page' => 6,
+	];
+	$article_query = new WP_Query( $articles_args );
 	?>
 
 	<?php while ( $article_query->have_posts() ) : $article_query->the_post(); ?>
 
 		<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
 
-	<?php endwhile; wp_reset_postdata(); ?>
+	<?php
+	endwhile;
+	wp_reset_postdata();
+	?>
 
-	<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>"><?php esc_html_e( 'Kaikki uutiset' ); ?></a>
+	<?php printf( '<a href="%s">%s</a>', esc_url( get_permalink( get_option( 'page_for_posts' ) ) ), esc_html( 'Kaikki uutiset' ) ); ?>
 
 <?php endwhile; ?>
 

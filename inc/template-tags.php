@@ -6,7 +6,7 @@
  * @return string
  */
 function flo_starter_the_pagination() {
-	echo get_the_posts_pagination( [ 'mid_size'  => 3 ] );
+	the_posts_pagination( [ 'mid_size' => 3 ] );
 }
 
 /**
@@ -15,7 +15,7 @@ function flo_starter_the_pagination() {
  * @return string
  */
 function flo_starter_get_single_post_datetime() {
-	return '<time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date( 'j.n.Y' ) ) . '</time>';
+	return sprintf( '<time datetime="%s">%s</time>', esc_attr( get_the_date( 'Y-m-d' ) ), esc_html( get_the_date() ) );
 }
 
 /**
@@ -47,11 +47,11 @@ function flo_starter_get_single_post_meta_data( $display_terms = true, $taxonomy
 function flo_starter_get_hierarchical_pages() {
 	$current_id = get_the_id();
 	$ancestors = get_post_ancestors( $current_id );
-	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors )-1 ] : $current_id;
+	$top_level = ( $ancestors ) ? $ancestors[ count( $ancestors ) - 1 ] : $current_id;
 	$output = '';
 
 	$args = [
-		'parent' => $top_level,
+		'parent'      => $top_level,
 		'sort_column' => 'menu_order',
 	];
 	$top_pages = get_pages( $args );
@@ -66,14 +66,14 @@ function flo_starter_get_hierarchical_pages() {
 				$li_classes[] = 'active';
 				$children_args = [
 					'sort_column' => 'menu_order',
-					'child_of' => $page->ID,
+					'child_of'    => $page->ID,
 				];
 				$children = get_pages( $children_args );
 				if ( $children ) {
 					$li_classes[] = 'has-children';
 					$child_list .= '<ul>';
 					foreach ( $children as $child ) {
-						$child_list .= '<li class="' . ( $current_id === $child->ID ? "active" : "" ) . '">';
+						$child_list .= '<li class="' . ( $current_id === $child->ID ? 'active' : '' ) . '">';
 						$child_list .= '<a href="' . esc_url( get_permalink( $child->ID ) ) . '">' . esc_html( $child->post_title ) . '</a>';
 						$child_list .= '</li>';
 					}
@@ -102,7 +102,7 @@ function flo_starter_get_category_list() {
 		echo '<h3>' . esc_html( 'Kategoriat' ) . '</h3>';
 		echo '<div class="nav flex-column nav-pills"><ul class="list-unstyled">';
 		foreach ( $categories as $category ) {
-			echo '<li class="nav-link ' . ( $cat === $category->term_id ? "active" : "" ) . '">' .
+			echo '<li class="nav-link ' . ( $cat === $category->term_id ? 'active' : '' ) . '">' .
 				'<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->cat_name ) . '</a>' .
 				'</li>';
 		}

@@ -4,7 +4,7 @@
  * Disable viewing users via REST API
  */
 function flo_starter_disable_user_endpoints( $endpoints ) {
-	if ( !is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 		if ( isset( $endpoints['/wp/v2/users'] ) ) {
 			unset( $endpoints['/wp/v2/users'] );
 		}
@@ -24,15 +24,21 @@ add_filter( 'xmlrpc_enabled', '__return_false' );
 /**
  * Remove X-Pingback header
  */
-add_filter( 'wp_headers', function ( $headers ) {
+add_filter(
+	'wp_headers',
+	function ( $headers ) {
 		unset( $headers['X-Pingback'] );
 		return $headers;
-	} );
+	}
+);
 
 /**
  * Remove Pingback functionality
  */
-add_filter( 'xmlrpc_methods', function ( $methods ) {
+add_filter(
+	'xmlrpc_methods',
+	function ( $methods ) {
 		unset( $methods['pingback.ping'] );
 		return $methods;
-	} );
+	}
+);

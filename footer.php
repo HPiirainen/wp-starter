@@ -5,7 +5,6 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  */
-
 ?>
 
 	<footer id="footer"></footer>
@@ -14,14 +13,15 @@
 <?php wp_footer(); ?>
 
 <!--
+<?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript ?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-  gtag('config', 'UA-XXXXXXXX');
-  gtag('config', 'UA-YYYYYYYY');
+	gtag('config', 'UA-XXXXXXXX');
+	gtag('config', 'UA-YYYYYYYY');
 </script>
 -->
 
