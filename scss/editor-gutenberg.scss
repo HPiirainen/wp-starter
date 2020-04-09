@@ -3,6 +3,8 @@
 ========================================================================== */
 
 // @import "bootstrap-custom";
+// $font-family-base: 'Open Sans';
+$block-max-width: 580px;
 
 .edit-post-visual-editor .block-editor-block-list__block {
 // 	font-family: $font-family-base;
@@ -40,8 +42,7 @@
 }
 
 .wp-block {
-/* Content width + 30px for margins */
-// 	max-width: calc(668px + 30px);
+	max-width: $block-max-width;
 }
 
 // editor title
