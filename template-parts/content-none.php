@@ -11,12 +11,12 @@
 
 <?php if ( is_search() ) : ?>
 
-	<p><?php esc_html_e( 'Hakusanalla ei löytynyt tuloksia. Kokeile uudestaan eri hakusanalla.' ); ?></p>
+	<p><?php echo esc_html( 'Hakusanalla ei löytynyt tuloksia. Kokeile uudestaan eri hakusanalla.' ); ?></p>
 
 <?php else : ?>
 
-	<h1><?php esc_html_e( 'Sisältöä ei löytynyt' ); ?></h1>
+	<h1><?php echo esc_html( 'Sisältöä ei löytynyt' ); ?></h1>
 
-	<p><?php esc_html_e( 'Sisältöä ei valitettavasti löytynyt.' ); ?></p>
+	<p><?php echo esc_html( 'Sisältöä ei valitettavasti löytynyt.' ); ?></p>
 
 <?php endif; ?>

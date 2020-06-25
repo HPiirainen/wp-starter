@@ -14,7 +14,7 @@ get_header(); ?>
 
 	<?php global $wp_query; ?>
 
-	<p><?php esc_html( 'Haulla löytyi ' ) . printf( esc_html( _n( '%s tulos.', '%s tulosta.', $wp_query->found_posts ) ), esc_html( $wp_query->found_posts ) ); ?></p>
+	<p><?php echo esc_html( 'Haulla löytyi ' ) . sprintf( esc_html( _n( '%s tulos.', '%s tulosta.', $wp_query->found_posts ) ), esc_html( $wp_query->found_posts ) ); ?></p>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
