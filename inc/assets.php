@@ -15,13 +15,13 @@ function flo_starter_get_font_url() {
 function flo_starter_enqueue_scripts() {
 	$main_js_file_name = 'jquery.main';
 	$main_css_file_name = 'main';
+	$bootstrap_version = '4.5.0';
 
-	wp_enqueue_script( 'flo_starter-popper-js', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', [ 'jquery' ], '1.14.7', true );
-	wp_enqueue_script( 'flo_starter-bootstrap-js', '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', [ 'jquery', 'flo_starter-popper-js' ], '4.3.1', true );
+	wp_enqueue_script( 'flo_starter-bootstrap-js', "//stackpath.bootstrapcdn.com/bootstrap/{$bootstrap_version}/js/bootstrap.bundle.min.js", [ 'jquery' ], $bootstrap_version, true );
 	wp_enqueue_script( 'flo_starter-mainjs', get_theme_file_uri( "js/{$main_js_file_name}.js" ), [ 'jquery' ], filemtime( get_theme_file_path( "js/{$main_js_file_name}.js" ) ), true );
 
 	wp_enqueue_style( 'flo_starter-fonts', esc_url_raw( flo_starter_get_font_url() ), [], '1' );
-	wp_enqueue_style( 'flo_starter-bootstrap-css', get_theme_file_uri( 'css/bootstrap.css' ), [], '4.3.1' );
+	wp_enqueue_style( 'flo_starter-bootstrap-css', get_theme_file_uri( 'css/bootstrap.css' ), [], filemtime( get_theme_file_path( 'css/bootstrap.css' ) ) );
 	wp_enqueue_style( 'flo_starter-style', get_theme_file_uri( "css/{$main_css_file_name}.css" ), [ 'flo_starter-bootstrap-css' ], filemtime( get_theme_file_path( "css/{$main_css_file_name}.css" ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'flo_starter_enqueue_scripts' );
