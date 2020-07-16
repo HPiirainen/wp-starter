@@ -40,6 +40,30 @@ function flo_starter_get_single_post_meta_data( $display_terms = true, $taxonomy
 }
 
 /**
+ * Converts ACF Link array to link / button markup
+ *
+ * @param array $link_array
+ * @param array $classes HTML classes to add
+ * @param string $before HTML output before link text
+ * @param string $after HTML output ffter link text
+ * @return string
+ */
+function flo_starter_construct_link_from_array( $link_array, $classes = [], $before = '', $after = '' ) {
+	if ( ! is_array( $link_array ) ) {
+		return '';
+	}
+	$class_string = ! empty( $classes ) ? 'class="' . esc_attr( implode( ' ', $classes ) ) . '"' : '';
+	$target_string = '_self' !== $link_array['target'] ? 'target="' . esc_attr( $link_array['target'] ) . '"' : '';
+	return sprintf(
+		'<a href="%s" %s %s>%s</a>',
+		esc_url( $link_array['url'] ),
+		$class_string,
+		$target_string,
+		$before . esc_html( $link_array['title'] ) . $after
+	);
+}
+
+/**
  * Create sub-nav
  *
  * Shows siblings and children, to be used in sidebars if needed
