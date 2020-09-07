@@ -31,6 +31,8 @@ function flo_starter_after_setup_theme() {
 	add_theme_support( 'disable-custom-gradients' );
 	add_theme_support( 'editor-gradient-presets', [] );
 
+	remove_theme_support( 'core-block-patterns' );
+
 	// Set max content width
 	if ( ! isset( $content_width ) ) {
 		$content_width = 800;
