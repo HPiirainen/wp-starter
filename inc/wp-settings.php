@@ -23,3 +23,8 @@ function flo_starter_limit_revisions( $number, $post ) {
 	return 10;
 }
 add_filter( 'wp_revisions_to_keep', 'flo_starter_limit_revisions', 10, 2 );
+
+/**
+ * Disable plugins auto-update UI elements.
+ */
+add_filter( 'plugins_auto_update_enabled', '__return_false' );
