@@ -11,6 +11,7 @@ function flo_starter_after_setup_theme() {
 	add_theme_support(
 		'html5',
 		[
+			'navigation-widgets',
 			'search-form',
 			'comment-form',
 			'comment-list',
