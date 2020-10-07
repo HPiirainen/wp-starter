@@ -11,15 +11,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/favicon.ico" type="image/x-icon">
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 
 	<div class="logo">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 			<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/logo.png" height="100" width="100" alt="logo">
 		</a>
 	</div>
