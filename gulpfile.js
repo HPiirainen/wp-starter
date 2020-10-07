@@ -5,6 +5,7 @@ const browserSync = require('browser-sync').create();
 const cleancss = require('gulp-clean-css');
 const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
+const phpcs = require('gulp-phpcs');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -83,6 +84,14 @@ const imagesTask = () => {
 		.pipe(gulp.dest('./images'));
 };
 
+const phpTask = () => {
+	return gulp.src(['**/*.php', '!node_modules/**/*.*'])
+		.pipe(phpcs({
+			standard: '/Applications/MAMP/htdocs/.phpcs.xml',
+		}))
+		.pipe(phpcs.reporter('log'));
+}
+
 /**
  * Task definitions
  */
@@ -91,4 +100,5 @@ gulp.task('serve', gulp.parallel(serveTask, watchTask));
 gulp.task('sass', gulp.series(sassTask));
 gulp.task('vendorsass', gulp.series(vendorSassTask));
 gulp.task('images', gulp.series(imagesTask));
+gulp.task('php', gulp.series(phpTask));
 gulp.task('default', gulp.series(watchTask));

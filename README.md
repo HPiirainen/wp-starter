@@ -18,3 +18,6 @@
   * for example `bootstrap.scss`
 * `images`
   * simply optimizes theme images
+* `php`
+  * runs PHPCS on theme PHP files
+  * modify `standard` option to match ruleset file or use a built-in standard
