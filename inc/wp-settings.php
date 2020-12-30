@@ -28,3 +28,8 @@ add_filter( 'wp_revisions_to_keep', 'flo_starter_limit_revisions', 10, 2 );
  * Disable plugins auto-update UI elements.
  */
 add_filter( 'plugins_auto_update_enabled', '__return_false' );
+
+/**
+ * Disallow enabling major core updates
+ */
+add_filter( 'allow_major_auto_core_updates', '__return_false' );
